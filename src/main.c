@@ -10,6 +10,7 @@ typedef struct
 
 void criar_snippet();
 void listar_snippets();
+void buscar_snippet();
 
 Snippet snippets[100];
 int quantidade = 0;
@@ -108,5 +109,34 @@ void listar_snippets()
         printf("\n--- Snippet %d ---\n", i + 1);
         printf("Chave: %s\n", snippets[i].chave);
         printf("Texto: %s\n", snippets[i].texto);
+    }
+}
+
+void buscar_snippet()
+{
+    char chave[50];
+    int encontrado = 0;
+
+    printf("Chave: ");
+    fgets(chave, 50, stdin);
+
+    chave[strcspn(chave, "\n")] = '\0';
+
+    for (int i = 0; i < quantidade; i++)
+    {
+        if (strcmp(chave, snippets[i].chave) == 0)
+        {
+            printf("\nSnippet encontrado!\n");
+            printf("Chave: %s\n", snippets[i].chave);
+            printf("Texto: %s\n", snippets[i].texto);
+
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (encontrado == 0)
+    {
+        printf("Snippet nao encontrado.\n");
     }
 }
