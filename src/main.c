@@ -9,7 +9,7 @@ typedef struct
 } Snippet;
 
 void criar_snippet();
-
+void listar_snippets();
 
 Snippet snippets[100];
 int quantidade = 0;
@@ -95,3 +95,18 @@ void criar_snippet()
     printf("Snippet criado!\n");
 }
 
+void listar_snippets()
+{
+    if (quantidade == 0)
+    {
+        printf("Nenhum snippet cadastrado.\n");
+        return;
+    }
+
+    for (int i = 0; i < quantidade; i++)
+    {
+        printf("\n--- Snippet %d ---\n", i + 1);
+        printf("Chave: %s\n", snippets[i].chave);
+        printf("Texto: %s\n", snippets[i].texto);
+    }
+}
